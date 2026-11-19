@@ -4,8 +4,11 @@ A lightweight, dark-mode-only Vencord theme with Catppuccin Mocha colors, A2Z ty
 
 ## Install
 
-1. Download `theme.css` and optionally `snippets/shapes.css` into Vencord's themes folder (Vencord Settings > Themes > Open Themes Folder), then enable them in the Themes tab.
-2. Or add `https://raw.githubusercontent.com/devwriet/mocha-setup/main/theme.css` and optionally `https://raw.githubusercontent.com/devwriet/mocha-setup/main/snippets/shapes.css` in the Online Themes tab.
+1. Download `theme.css` and, optionally, `snippets/shapes.css` and `snippets/plain-names.css` into Vencord's themes folder (Vencord Settings > Themes > Open Themes Folder), then enable them in the Themes tab.
+2. Or add these URLs in the Online Themes tab. Only the first one is required.
+   - `https://raw.githubusercontent.com/devwriet/mocha-theme/main/theme.css`
+   - `https://raw.githubusercontent.com/devwriet/mocha-theme/main/snippets/shapes.css`
+   - `https://raw.githubusercontent.com/devwriet/mocha-theme/main/snippets/plain-names.css`
 
 ## Snippets
 
@@ -14,13 +17,25 @@ A lightweight, dark-mode-only Vencord theme with Catppuccin Mocha colors, A2Z ty
 
 ## Performance notes
 
-The theme avoids a base-theme `@import`, `backdrop-filter`, blur, and message-list animations. It loads only three WOFF2 font weights from jsDelivr and uses static inline SVG shapes. These choices remove theme-side costs that made the previous theme slow. Discord's CSS variables can change without notice, so an update can break parts of the theme.
+The theme avoids a base-theme `@import`, `backdrop-filter`, blur, and message-list animations. It loads only three WOFF2 font weights from jsDelivr and uses static inline SVG shapes. Discord's CSS variables can change without notice, so an update can break parts of the theme.
+
+Compared with a Midnight-based theme that used animated blur, `backdrop-filter`, and about 11 MB of TTF fonts:
+
+| | Midnight-based theme | Mocha Setup |
+| --- | --- | --- |
+| Frame rate while switching channels and scrolling | 23.9 fps | 49.9 fps |
+| Time frozen in a 20-second run | 8.2 s | 2.3 s |
+| Theme downloads | ~12.6 MB | 290 KB |
+
+These are one run each on one Mac, so expect the exact numbers to vary.
 
 ## Notes
 
 The theme slims the top title bar and hides back/forward buttons, the title, Inbox, and Help. On macOS it places the Vencord Toolbox, DevTools, and update icons at the right end of the chat header; on Windows and Linux it leaves that group in the top bar to keep native window controls in place.
+
 The typing indicator uses custom text set by the `--mocha-typing-*` tokens in `theme.css`.
-The loading screen cycles custom quotes; edit the first quote in the base `content` declaration in `theme.css`. CSS cannot randomize, so each load starts on the first quote.
+
+The loading screen cycles custom quotes. Edit the first quote in the base `content` declaration in `theme.css` and the rest in the `mocha-quotes` keyframes below it. CSS cannot randomize, so each load starts on the first quote.
 
 ## Credits
 
