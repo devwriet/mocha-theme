@@ -1,5 +1,5 @@
 Copyright (c) 2026, PT& (A2Z / 에이투지체, Freesentation).
-Modified by devwriet: removed empty Hangul cmap entries so missing syllables fall back to another font. Glyph outlines unchanged.
+Modified by devwriet: removed empty Hangul syllable entries and the conjoining jamo (U+1100-11FF), so missing syllables fall back to another font instead of rendering blank or as loose jamo. Glyph outlines unchanged.
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

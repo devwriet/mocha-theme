@@ -53,15 +53,15 @@ SOFTWARE.
 /* A2Z font weights stay separate so Discord can request real weights. */
 @font-face {
   font-family: 'A2Z'; font-style: normal; font-weight: 400; font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/devwriet/mocha-theme@main/fonts/A2Z-4Regular.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/gh/devwriet/mocha-theme@main/fonts/A2Z-4Regular.woff2?v=2') format('woff2');
 }
 @font-face {
   font-family: 'A2Z'; font-style: normal; font-weight: 600; font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/devwriet/mocha-theme@main/fonts/A2Z-6SemiBold.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/gh/devwriet/mocha-theme@main/fonts/A2Z-6SemiBold.woff2?v=2') format('woff2');
 }
 @font-face {
   font-family: 'A2Z'; font-style: normal; font-weight: 700; font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/devwriet/mocha-theme@main/fonts/A2Z-7Bold.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/gh/devwriet/mocha-theme@main/fonts/A2Z-7Bold.woff2?v=2') format('woff2');
 }
 /* A2Z only draws about 2,780 syllables (fonts/ copies drop the empty rest), so Pretendard catches the other 8,392. */
 @font-face {
