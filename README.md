@@ -19,18 +19,6 @@ Optional. Need `theme.css` enabled.
 - `snippets/shapes.css`: more background shapes.
 - `snippets/plain-names.css`: display names use the theme font.
 
-## Performance
-
-No blur, no `backdrop-filter`, no `@import`, no message animations. Three small font files.
-
-| | Old blur theme | Mocha Setup |
-| --- | --- | --- |
-| Frame rate | 23.9 fps | 49.9 fps |
-| Frozen time (20 s) | 8.2 s | 2.3 s |
-| Downloads | ~12.6 MB | 290 KB |
-
-One run each, one Mac.
-
 ## Customize
 
 - Typing text: `--mocha-typing-*` tokens in `theme.css`.
