@@ -1,0 +1,247 @@
+/**
+ * @name Mocha Setup
+ * @description Lightweight Catppuccin Mocha theme with A2Z font and static geometric shapes.
+ * @author devwriet
+ * @version 0.1.0
+ */
+/*
+MIT License
+
+Copyright (c) 2021 Catppuccin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+/* Catppuccin Mocha tokens. */
+:root {
+  --mocha-base: #1e1e2e;
+  --mocha-mantle: #181825;
+  --mocha-crust: #11111b;
+  --mocha-surface0: #313244;
+  --mocha-surface1: #45475a;
+  --mocha-surface2: #585b70;
+  --mocha-overlay0: #6c7086;
+  --mocha-text: #cdd6f4;
+  --mocha-subtext1: #bac2de;
+  --mocha-subtext0: #a6adc8;
+  --mocha-lavender: #b4befe;
+  --mocha-teal: #94e2d5;
+  --mocha-yellow: #f9e2af;
+  --mocha-red: #f38ba8;
+  --mocha-font: 'A2Z', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --mocha-shapes: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Ccircle cx='80' cy='80' r='54' fill='%2394e2d5' fill-opacity='.1'/%3E%3C/svg%3E") right 6% top 12% / 160px 160px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cpath d='M90 20 160 150H20Z' fill='none' stroke='%23b4befe' stroke-opacity='.2' stroke-width='5'/%3E%3C/svg%3E") left 4% bottom 18% / 180px 180px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140'%3E%3Cpath d='M30 30h80v80H30z' fill='%23f2cdcd' fill-opacity='.08' transform='rotate(25 70 70)'/%3E%3C/svg%3E") right 22% bottom 8% / 140px 140px no-repeat;
+  --mocha-typing-solo: " is summarizing thoughts";
+  --mocha-typing-multi-prefix: "hoping ";
+  --mocha-typing-multi-suffix: " won't say stupid things";
+  --mocha-typing-many: "several people are larping rn";
+}
+/* A2Z font weights stay separate so Discord can request real weights. */
+@font-face {
+  font-family: 'A2Z'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/%EC%97%90%EC%9D%B4%ED%88%AC%EC%A7%80%EC%B2%B4-4Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'A2Z'; font-style: normal; font-weight: 600; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/%EC%97%90%EC%9D%B4%ED%88%AC%EC%A7%80%EC%B2%B4-6SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'A2Z'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/%EC%97%90%EC%9D%B4%ED%88%AC%EC%A7%80%EC%B2%B4-7Bold.woff2') format('woff2');
+}
+/* Current Discord variables, dark appearance only. Discord re-declares them on inner .theme-dark
+   wrappers (sidebar, lists), so those must be targeted too or they win (Midnight scopes the same way). */
+html.theme-dark,
+html.theme-dark body,
+html.theme-dark .theme-dark:not(.custom-user-profile-theme) {
+  --custom-app-top-bar-height: 32px;
+  --background-base-lower: var(--mocha-base);
+  /* Srit found crust too dark for the server list; one step lighter each. */
+  --background-base-lowest: var(--mocha-mantle);
+  --background-base-low: color-mix(in srgb, var(--mocha-mantle), var(--mocha-base));
+  --chat-background-default: var(--mocha-base);
+  --background-surface-high: var(--mocha-surface0);
+  --background-mod-subtle: var(--mocha-surface0);
+  --background-mod-normal: var(--mocha-surface0);
+  --background-mod-strong: var(--mocha-surface1);
+  --interactive-background-hover: var(--mocha-surface0);
+  --interactive-background-selected: var(--mocha-surface1);
+  --interactive-background-active: var(--mocha-surface1);
+  --interactive-text-default: var(--mocha-subtext0);
+  --interactive-text-hover: var(--mocha-text);
+  --interactive-text-active: var(--mocha-lavender);
+  --channels-default: var(--mocha-subtext0);
+  --border-subtle: var(--mocha-surface0);
+  --border-normal: var(--mocha-surface1);
+  --border-strong: var(--mocha-surface2);
+  --text-default: var(--mocha-text);
+  --text-muted: var(--mocha-subtext1);
+  --text-strong: var(--mocha-text);
+  --text-subtle: var(--mocha-subtext0);
+  --text-link: var(--mocha-teal);
+  --text-brand: var(--mocha-lavender);
+  --brand-500: var(--mocha-lavender);
+  --background-brand: var(--mocha-lavender);
+  --control-brand-foreground: var(--mocha-crust);
+  --control-primary-background-default: var(--mocha-lavender);
+  --control-primary-background-hover: color-mix(in srgb, var(--mocha-lavender), white 15%);
+  --control-primary-background-active: color-mix(in srgb, var(--mocha-lavender), black 10%);
+  --control-primary-text-default: var(--mocha-crust);
+  --control-primary-text-hover: var(--mocha-crust);
+  --control-primary-text-active: var(--mocha-crust);
+  --mention-foreground: var(--mocha-lavender);
+  --mention-background: rgb(180 190 254 / .12);
+  --status-online: var(--mocha-teal);
+  --icon-status-online: var(--mocha-teal);
+  --icon-status-idle: var(--mocha-yellow);
+  --icon-status-dnd: var(--mocha-red);
+  --icon-status-offline: var(--mocha-overlay0);
+  --text-status-online: var(--mocha-teal);
+  --text-status-idle: var(--mocha-yellow);
+  --text-status-dnd: var(--mocha-red);
+  --text-status-offline: var(--mocha-overlay0);
+  --font-primary: var(--mocha-font);
+  --font-display: var(--mocha-font);
+  --font-code: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+/* Hash suffixes change; shapes stay on non-scrolling chat to avoid scroll repaints. */
+html.theme-dark [class*="chatContent_"] {
+  background: var(--mocha-shapes), var(--mocha-base);
+}
+html.theme-dark [class*="messagesWrapper_"] { background: transparent; }
+/* Inbox/Help hide; Toolbox, DevTools, and updates stay. The live DOM lacks the Toolbox hook, so this uses a block-list. */
+html.theme-dark :is([class^="bar_"], [class*=" bar_"]) :is([class^="backForwardButtons_"], [class*=" backForwardButtons_"]),
+html.theme-dark :is([class^="bar_"], [class*=" bar_"]) > :is([class^="title_"], [class*=" title_"]),
+html.theme-dark :is([class^="bar_"], [class*=" bar_"]) > :is([class^="trailing_"], [class*=" trailing_"]) > :is([class^="iconWrapper_"], [class*=" iconWrapper_"]),
+html.theme-dark :is([class^="bar_"], [class*=" bar_"]) > :is([class^="trailing_"], [class*=" trailing_"]) > a[href^="https://support.discord.com"] {
+  display: none;
+}
+/* refact0r Midnight titlebar mode; assumes a 48px chat header. */
+html.theme-dark.platform-osx :is([class^="bar_"], [class*=" bar_"]) > :is([class^="trailing_"], [class*=" trailing_"]) {
+  position: absolute;
+  top: calc(var(--custom-app-top-bar-height) + 8px);
+  right: 16px;
+  height: 32px;
+  gap: 8px;
+  z-index: 1000;
+}
+/* ponytail: 118px is tuned by eye on Srit's mac (about 8px gap after search with 3 icons); retune if the icon count changes. */
+html.theme-dark.platform-osx :is([class^="chat_"], [class*=" chat_"]) > :is([class^="subtitleContainer_"], [class*=" subtitleContainer_"]) :is([class^="title_"], [class*=" title_"]) :is([class^="toolbar_"], [class*=" toolbar_"]) {
+  padding-right: 118px;
+}
+html.theme-dark :is([class^="channelTextArea_"], [class*=" channelTextArea_"]) {
+  border: 1px solid var(--mocha-surface2);
+}
+html.theme-dark :is([class^="channelTextArea_"], [class*=" channelTextArea_"]):focus-within {
+  border-color: var(--mocha-lavender);
+}
+/* Status dots plus Vencord PlatformIndicators icons (Midnight lines 1717-1736). */
+html.theme-dark rect[fill="#84858d"] { fill: var(--mocha-overlay0); }
+html.theme-dark rect[fill="#45a366"],
+html.theme-dark .vc-platform-indicator > svg[fill="#45a366"] { fill: var(--mocha-teal); }
+html.theme-dark rect[fill="#ffc04e"],
+html.theme-dark .vc-platform-indicator > svg[fill="#ffc04e"] { fill: var(--mocha-yellow); }
+html.theme-dark rect[fill="#da3e44"],
+html.theme-dark .vc-platform-indicator > svg[fill="#da3e44"] { fill: var(--mocha-red); }
+
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) {
+  font-size: 0;
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:not(:nth-of-type(n + 4)) {
+  font-size: 14px;
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:not(:nth-of-type(n + 4))::before,
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:not(:nth-of-type(n + 4))::after,
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"])::after {
+  /* Own color so the sentence does not wear the role color of the name. */
+  color: var(--mocha-subtext0);
+  font-weight: 400;
+  font-size: 14px;
+  white-space: pre;
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:only-of-type::after {
+  content: var(--mocha-typing-solo);
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:first-of-type:nth-last-of-type(2)::before,
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:first-of-type:nth-last-of-type(3)::before {
+  content: var(--mocha-typing-multi-prefix);
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:first-of-type:nth-last-of-type(2)::after {
+  content: " and ";
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:first-of-type:nth-last-of-type(3)::after {
+  content: ", ";
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:nth-of-type(2):nth-last-of-type(2)::after {
+  content: ", and ";
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:last-of-type:nth-of-type(2):nth-last-of-type(1)::after,
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) > strong:last-of-type:nth-of-type(3):nth-last-of-type(1)::after {
+  content: var(--mocha-typing-multi-suffix);
+}
+/* :has() stays inside the tiny typing span. */
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]):has(> strong:nth-of-type(4)) {
+  font-size: 14px;
+}
+html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]):not(:empty):not(:has(> strong))::after {
+  content: var(--mocha-typing-many);
+}
+
+/* Loading screen tip, live DOM 2026-11-19. The hash is pinned on purpose: bare container_/text_ would hit half of Discord.
+   If Discord rehashes oDjP9R, the stock tip comes back and nothing else breaks.
+   Edit the first quote in this base content declaration.
+   Incident notices keep Discord's text; :has() scans this tiny loading block. */
+html.theme-dark .container_oDjP9R .text_oDjP9R:not(:has(> .title_oDjP9R)) {
+  font-size: 0;
+}
+html.theme-dark .container_oDjP9R .text_oDjP9R:not(:has(> .title_oDjP9R)) > * {
+  display: none;
+}
+html.theme-dark .container_oDjP9R .text_oDjP9R:not(:has(> .title_oDjP9R))::after {
+  color: var(--mocha-subtext1);
+  content: "brewing your mocha... please hold the cup";
+  font-family: var(--mocha-font);
+  font-size: 14px;
+  animation: mocha-quotes 30s steps(1, end) infinite;
+}
+/* The screen unmounts after loading, so this animation only runs while it is mounted. */
+@keyframes mocha-quotes {
+  8.3333% { content: "loading messages you will read and never reply to"; }
+  16.6667% { content: "convincing the server hamsters to run faster"; }
+  25% { content: "fetching 47 pings from the server you muted"; }
+  33.3333% { content: "reticulating catppuccins"; }
+  41.6667% { content: "deleting the blur that made this slow"; }
+  50% { content: "your friends are typing. probably not to you"; }
+  58.3333% { content: "downloading more RAM (legally)"; }
+  66.6667% { content: "summoning the toolbox from the void"; }
+  75% { content: "calibrating shapes so they do not collide this time"; }
+  83.3333% { content: "touch grass reminder: postponed again"; }
+  91.6667% { content: "loading... the chat is not going anywhere"; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-dark .container_oDjP9R .text_oDjP9R:not(:has(> .title_oDjP9R))::after {
+    animation: none;
+  }
+}
+
+/* Lavender fills need a dark label to stay readable. */
+html.theme-dark :is([class^="botTagRegular_"], [class*=" botTagRegular_"]) {
+  color: var(--mocha-crust);
+}
+html.theme-dark :is([class^="filter_"], [class*=" filter_"]):is([class^="activeFilter_"], [class*=" activeFilter_"]) {
+  color: var(--mocha-crust);
+}

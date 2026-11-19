@@ -1,0 +1,10 @@
+/**
+ * @name Mocha Setup: plain names
+ * @description Opt-in snippet for Mocha Setup. Forces every display name style font back to the theme font; name colors and gradients stay.
+ * @author devwriet
+ * @version 0.1.0
+ */
+/* Every display-name-style font carries dnsFont_; the font itself sits on a sibling class like pixelify_. */
+html.theme-dark :is([class^="dnsFont_"], [class*=" dnsFont_"]) {
+  font-family: var(--font-primary, sans-serif) !important;
+}
