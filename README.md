@@ -1,47 +1,52 @@
 # Mocha Setup
 
-A lightweight, dark-mode-only Vencord theme with Catppuccin Mocha colors, A2Z typography, and geometric chat backgrounds.
+Lightweight dark Vencord theme. Catppuccin Mocha colors, A2Z font, geometric background.
 
 ## Install
 
-1. Download `theme.css` and, optionally, `snippets/shapes.css` and `snippets/plain-names.css` into Vencord's themes folder (Vencord Settings > Themes > Open Themes Folder), then enable them in the Themes tab.
-2. Or add these URLs in the Online Themes tab. Only the first one is required.
-   - `https://raw.githubusercontent.com/devwriet/mocha-theme/main/theme.css`
-   - `https://raw.githubusercontent.com/devwriet/mocha-theme/main/snippets/shapes.css`
-   - `https://raw.githubusercontent.com/devwriet/mocha-theme/main/snippets/plain-names.css`
+Copy `theme.css` into Vencord's themes folder (Settings > Themes > Open Themes Folder) and enable it.
+
+Or add this URL under Online Themes:
+
+```
+https://raw.githubusercontent.com/devwriet/mocha-theme/main/theme.css
+```
 
 ## Snippets
 
-- `shapes.css`: full geometric background. Requires `theme.css` enabled. Disable it to restore the sparse default.
-- `plain-names.css`: shows every display name in the theme font instead of its display name style font. Name colors and gradients stay. Requires `theme.css` enabled.
+Optional. Need `theme.css` enabled.
 
-## Performance notes
+- `snippets/shapes.css`: more background shapes.
+- `snippets/plain-names.css`: display names use the theme font.
 
-The theme avoids a base-theme `@import`, `backdrop-filter`, blur, and message-list animations. It loads only three WOFF2 font weights from jsDelivr and uses static inline SVG shapes. Discord's CSS variables can change without notice, so an update can break parts of the theme.
+## Performance
 
-Compared with a Midnight-based theme that used animated blur, `backdrop-filter`, and about 11 MB of TTF fonts:
+No blur, no `backdrop-filter`, no `@import`, no message animations. Three small font files.
 
-| | Midnight-based theme | Mocha Setup |
+| | Old blur theme | Mocha Setup |
 | --- | --- | --- |
-| Frame rate while switching channels and scrolling | 23.9 fps | 49.9 fps |
-| Time frozen in a 20-second run | 8.2 s | 2.3 s |
-| Theme downloads | ~12.6 MB | 290 KB |
+| Frame rate | 23.9 fps | 49.9 fps |
+| Frozen time (20 s) | 8.2 s | 2.3 s |
+| Downloads | ~12.6 MB | 290 KB |
 
-These are one run each on one Mac, so expect the exact numbers to vary.
+One run each, one Mac.
+
+## Customize
+
+- Typing text: `--mocha-typing-*` tokens in `theme.css`.
+- Loading quotes: the `mocha-quotes` keyframes in `theme.css`. First quote is the base `content` above them.
 
 ## Notes
 
-The theme slims the top title bar and hides back/forward buttons, the title, Inbox, and Help. On macOS it places the Vencord Toolbox, DevTools, and update icons at the right end of the chat header; on Windows and Linux it leaves that group in the top bar to keep native window controls in place.
-
-The typing indicator uses custom text set by the `--mocha-typing-*` tokens in `theme.css`.
-
-The loading screen cycles custom quotes. Edit the first quote in the base `content` declaration in `theme.css` and the rest in the `mocha-quotes` keyframes below it. CSS cannot randomize, so each load starts on the first quote.
+- Dark mode only.
+- Hides back/forward, title, Inbox, and Help in the top bar. On macOS the Vencord Toolbox, DevTools, and update icons move to the chat header.
+- Discord updates can break selectors.
 
 ## Credits
 
-- Catppuccin palette, MIT: https://github.com/catppuccin/catppuccin
-- A2Z font (에이투지체) by Freesentation, SIL Open Font License 1.1; loaded from the noonnu jsDelivr mirror (projectnoonnu), not bundled in this repository.
+- [Catppuccin](https://github.com/catppuccin/catppuccin) palette (MIT)
+- A2Z (에이투지체) by Freesentation (OFL 1.1), via the noonnu jsDelivr mirror
 
 ## License
 
-Theme code is MIT licensed; see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
