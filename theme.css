@@ -95,6 +95,11 @@ html.theme-dark .theme-dark:not(.custom-user-profile-theme) {
   --text-link: var(--mocha-teal);
   --text-brand: var(--mocha-lavender);
   --brand-500: var(--mocha-lavender);
+  --brand-260: var(--mocha-lavender);
+  --brand-360: var(--mocha-lavender);
+  --blurple-50: var(--mocha-lavender);
+  --green-360: var(--mocha-teal); /* Vencord plugins grab this one directly (Midnight 1355) */
+  --yellow-300: var(--mocha-yellow); /* voice sensitivity bar */
   --background-brand: var(--mocha-lavender);
   --control-brand-foreground: var(--mocha-crust);
   --control-primary-background-default: var(--mocha-lavender);
@@ -106,6 +111,21 @@ html.theme-dark .theme-dark:not(.custom-user-profile-theme) {
   --mention-foreground: var(--mocha-lavender);
   --mention-background: rgb(180 190 254 / .12);
   --status-online: var(--mocha-teal);
+  --status-positive: var(--mocha-teal);
+  --status-positive-background: color-mix(in srgb, var(--mocha-teal) 20%, var(--mocha-base)); /* solid teal hid the teal "Active" label */
+  --status-speaking: var(--mocha-teal);
+  --status-danger: var(--mocha-red);
+  --status-warning: var(--mocha-yellow);
+  --background-code-addition: color-mix(in srgb, var(--mocha-teal), transparent 80%);
+  --background-code-deletion: color-mix(in srgb, var(--mocha-red), transparent 80%);
+  --background-feedback-positive: color-mix(in srgb, var(--mocha-teal), transparent 80%);
+  --background-feedback-critical: color-mix(in srgb, var(--mocha-red), transparent 80%);
+  --background-feedback-warning: color-mix(in srgb, var(--mocha-yellow), transparent 80%);
+  --background-feedback-info: color-mix(in srgb, var(--mocha-lavender), transparent 80%);
+  --text-feedback-positive: var(--mocha-teal);
+  --text-feedback-critical: var(--mocha-red);
+  --text-feedback-warning: var(--mocha-yellow);
+  --text-feedback-info: var(--mocha-lavender);
   --icon-status-online: var(--mocha-teal);
   --icon-status-idle: var(--mocha-yellow);
   --icon-status-dnd: var(--mocha-red);
@@ -113,7 +133,7 @@ html.theme-dark .theme-dark:not(.custom-user-profile-theme) {
   --text-status-online: var(--mocha-teal);
   --text-status-idle: var(--mocha-yellow);
   --text-status-dnd: var(--mocha-red);
-  --text-status-offline: var(--mocha-overlay0);
+  --text-status-offline: var(--mocha-subtext0); /* overlay0 was 3.4:1 on base, too dim for text */
   --font-primary: var(--mocha-font);
   --font-display: var(--mocha-font);
   --font-code: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
@@ -157,6 +177,8 @@ html.theme-dark rect[fill="#ffc04e"],
 html.theme-dark .vc-platform-indicator > svg[fill="#ffc04e"] { fill: var(--mocha-yellow); }
 html.theme-dark rect[fill="#da3e44"],
 html.theme-dark .vc-platform-indicator > svg[fill="#da3e44"] { fill: var(--mocha-red); }
+/* Group DM avatar dot is a plain div, not an svg rect, so the rules above miss it. Only ever seen green. */
+html.theme-dark .status_PlwcO5 { background-color: var(--mocha-teal) !important; }
 
 html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) {
   font-size: 0;
@@ -238,8 +260,8 @@ html.theme-dark .container_oDjP9R .text_oDjP9R:not(:has(> .title_oDjP9R))::after
   }
 }
 
-/* Lavender fills need a dark label to stay readable. */
-html.theme-dark :is([class^="botTagRegular_"], [class*=" botTagRegular_"]) {
+/* Lavender and teal fills need a dark label; Discord hardcodes white text on them. */
+html.theme-dark :is([class^="botTagRegular_"], [class*=" botTagRegular_"], [class^="botTagAI_"], [class*=" botTagAI_"], [class^="tooltipGreen_"], [class*=" tooltipGreen_"]) {
   color: var(--mocha-crust);
 }
 html.theme-dark :is([class^="filter_"], [class*=" filter_"]):is([class^="activeFilter_"], [class*=" activeFilter_"]) {
