@@ -33,7 +33,8 @@ Optional. Need `theme.css` enabled.
 ## Credits
 
 - [Catppuccin](https://github.com/catppuccin/catppuccin) palette (MIT)
-- A2Z (에이투지체) by Freesentation (OFL 1.1), via the noonnu jsDelivr mirror
+- A2Z (에이투지체) by Freesentation (OFL 1.1). `fonts/` holds copies with the empty Hangul entries removed, so missing syllables fall back instead of showing blank. License in `fonts/OFL.txt`.
+- [Pretendard](https://github.com/orioncactus/pretendard) (OFL 1.1), fallback for Hangul that A2Z lacks
 
 ## License
 
