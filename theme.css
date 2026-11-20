@@ -43,6 +43,8 @@ SOFTWARE.
   --mocha-teal: #94e2d5;
   --mocha-yellow: #f9e2af;
   --mocha-red: #f38ba8;
+  --mocha-maroon: #eba0ac;
+  --mocha-sky: #89dceb;
   --mocha-font: 'A2Z', 'Mocha Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
   --mocha-shapes: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Ccircle cx='80' cy='80' r='54' fill='%2394e2d5' fill-opacity='.1'/%3E%3C/svg%3E") right 6% top 12% / 160px 160px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cpath d='M90 20 160 150H20Z' fill='none' stroke='%23b4befe' stroke-opacity='.2' stroke-width='5'/%3E%3C/svg%3E") left 4% bottom 18% / 180px 180px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140'%3E%3Cpath d='M30 30h80v80H30z' fill='%23f2cdcd' fill-opacity='.08' transform='rotate(25 70 70)'/%3E%3C/svg%3E") right 22% bottom 8% / 140px 140px no-repeat;
   --mocha-typing-solo: " is summarizing thoughts";
@@ -131,6 +133,13 @@ html.theme-dark .theme-dark:not(.custom-user-profile-theme) {
   --text-feedback-critical: var(--mocha-red);
   --text-feedback-warning: var(--mocha-yellow);
   --text-feedback-info: var(--mocha-lavender);
+  /* Ping counts and the LIVE pill read these, not --status-danger. Maroon; the LIVE pill gets sky below */
+  --badge-notification-background: var(--mocha-maroon);
+  --badge-notification-text: var(--mocha-crust);
+  --badge-critical-background: var(--mocha-maroon);
+  --badge-critical-text: var(--mocha-crust);
+  --background-feedback-notification: var(--mocha-maroon);
+  --icon-feedback-notification: var(--mocha-maroon);
   --icon-status-online: var(--mocha-teal);
   --icon-status-idle: var(--mocha-yellow);
   --icon-status-dnd: var(--mocha-red);
@@ -184,6 +193,10 @@ html.theme-dark rect[fill="#da3e44"],
 html.theme-dark .vc-platform-indicator > svg[fill="#da3e44"] { fill: var(--mocha-red); }
 /* Group DM avatar dot is a plain div, not an svg rect, so the rules above miss it. Only ever seen green. */
 html.theme-dark .status_PlwcO5 { background-color: var(--mocha-teal) !important; }
+/* LIVE pill in voice rows, live DOM 2026-11-20. Pinned hash so server pings stay maroon */
+html.theme-dark .icons_YUoOxm .badge_4guu7- { background-color: var(--mocha-sky); }
+/* "In voice" and "Sharing their screen" icons hardcode Discord green as a fill attribute */
+html.theme-dark svg [fill="#45a366"] { fill: var(--mocha-teal); }
 
 html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) {
   font-size: 0;
@@ -240,23 +253,23 @@ html.theme-dark .container_oDjP9R .text_oDjP9R:not(:has(> .title_oDjP9R)) > * {
 }
 html.theme-dark .container_oDjP9R .text_oDjP9R:not(:has(> .title_oDjP9R))::after {
   color: var(--mocha-subtext1);
-  content: "brewing your mocha... please hold the cup";
+  content: "downloading more RAM (legally)";
   font-family: var(--mocha-font);
   font-size: 14px;
   animation: mocha-quotes 30s steps(1, end) infinite;
 }
 /* The screen unmounts after loading, so this animation only runs while it is mounted. */
 @keyframes mocha-quotes {
-  8.3333% { content: "loading messages you will read and never reply to"; }
-  16.6667% { content: "convincing the server hamsters to run faster"; }
-  25% { content: "fetching 47 pings from the server you muted"; }
-  33.3333% { content: "reticulating catppuccins"; }
-  41.6667% { content: "deleting the blur that made this slow"; }
-  50% { content: "your friends are typing. probably not to you"; }
-  58.3333% { content: "downloading more RAM (legally)"; }
-  66.6667% { content: "summoning the toolbox from the void"; }
+  8.3333% { content: "convincing the server hamsters to run faster"; }
+  16.6667% { content: "reticulating catppuccins"; }
+  25% { content: "your friends are typing. probably not to you"; }
+  33.3333% { content: "brewing your mocha... please hold the cup"; }
+  41.6667% { content: "fetching 47 pings from the server you muted"; }
+  50% { content: "touch grass reminder: postponed again"; }
+  58.3333% { content: "deleting the blur that made this slow"; }
+  66.6667% { content: "loading messages you will read and never reply to"; }
   75% { content: "calibrating shapes so they do not collide this time"; }
-  83.3333% { content: "touch grass reminder: postponed again"; }
+  83.3333% { content: "summoning the toolbox from the void"; }
   91.6667% { content: "loading... the chat is not going anywhere"; }
 }
 @media (prefers-reduced-motion: reduce) {
