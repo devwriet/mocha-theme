@@ -191,12 +191,38 @@ html.theme-dark rect[fill="#ffc04e"],
 html.theme-dark .vc-platform-indicator > svg[fill="#ffc04e"] { fill: var(--mocha-yellow); }
 html.theme-dark rect[fill="#da3e44"],
 html.theme-dark .vc-platform-indicator > svg[fill="#da3e44"] { fill: var(--mocha-red); }
-/* Group DM avatar dot is a plain div, not an svg rect, so the rules above miss it. Only ever seen green. */
-html.theme-dark .status_PlwcO5 { background-color: var(--mocha-teal) !important; }
+/* Status dots that are plain divs (group DM avatar, status picker) carry Discord's color inline, so match each one. */
+html.theme-dark .status_PlwcO5[style*="69, 163, 102"] { background-color: var(--mocha-teal) !important; }
+html.theme-dark .status_PlwcO5[style*="255, 192, 78"] { background-color: var(--mocha-yellow) !important; }
+html.theme-dark .status_PlwcO5[style*="218, 62, 68"] { background-color: var(--mocha-red) !important; }
+html.theme-dark .status_PlwcO5[style*="132, 133, 141"] { background-color: var(--mocha-overlay0) !important; }
+/* Status picker labels, live DOM 2026-11-20. Menu ids are stable; the DND/Invisible subtext stays. */
+html.theme-dark :is(#set-status-submenu-online, #set-status-submenu-idle, #set-status-submenu-dnd, #set-status-submenu-invisible) .text_cmkR8z { font-size: 0; }
+html.theme-dark :is(#set-status-submenu-online, #set-status-submenu-idle, #set-status-submenu-dnd, #set-status-submenu-invisible) .text_cmkR8z::after { font-size: 14px; }
+html.theme-dark #set-status-submenu-online .text_cmkR8z::after { content: "not touching grass rn"; }
+html.theme-dark #set-status-submenu-idle .text_cmkR8z::after { content: "touching grass (brb)"; }
+html.theme-dark #set-status-submenu-dnd .text_cmkR8z::after { content: "in the zone, go away"; }
+html.theme-dark #set-status-submenu-invisible .text_cmkR8z::after { content: "lurking"; }
+/* Friends list subtext, live DOM 2026-11-20. The row's avatar dot fill says which status it is. A custom status uses other markup, so it stays. */
+html.theme-dark .peopleListItem_y75PxA .subtext_jPuNMC > .text_CXmngM { font-size: 0; }
+html.theme-dark .peopleListItem_y75PxA .subtext_jPuNMC > .text_CXmngM::after { font-size: 14px; }
+html.theme-dark .peopleListItem_y75PxA:has(rect[fill="#45a366"]) .subtext_jPuNMC > .text_CXmngM::after { content: "not touching grass rn"; }
+html.theme-dark .peopleListItem_y75PxA:has(rect[fill="#ffc04e"]) .subtext_jPuNMC > .text_CXmngM::after { content: "touching grass (brb)"; }
+html.theme-dark .peopleListItem_y75PxA:has(rect[fill="#da3e44"]) .subtext_jPuNMC > .text_CXmngM::after { content: "in the zone, go away"; }
+html.theme-dark .peopleListItem_y75PxA:has(rect[fill="#84858d"]) .subtext_jPuNMC > .text_CXmngM::after { content: "touched grass"; }
 /* LIVE pill in voice rows, live DOM 2026-11-20. Pinned hash so server pings stay maroon */
 html.theme-dark .icons_YUoOxm .badge_4guu7- { background-color: var(--mocha-sky); }
 /* "In voice" and "Sharing their screen" icons hardcode Discord green as a fill attribute */
 html.theme-dark svg [fill="#45a366"] { fill: var(--mocha-teal); }
+/* Member-list voice lines, live DOM 2026-11-20. aria-label tells them apart (English client only). With a custom status, Discord drops this text div, so the status stays. */
+html.theme-dark .textWithIconContainer_HigqCD:is([aria-label^="In voice"], [aria-label^="Sharing their screen"]) > .truncated_HigqCD { font-size: 0; }
+html.theme-dark .textWithIconContainer_HigqCD[aria-label^="In voice"] > .truncated_HigqCD::after { content: "yapping"; font-size: 12px; }
+html.theme-dark .textWithIconContainer_HigqCD[aria-label^="Sharing their screen"] > .truncated_HigqCD::after { content: "showing off"; font-size: 12px; }
+/* Voice row with a custom status: drop the dot and read "thinking '<status>'" */
+html.theme-dark .container_HigqCD:has(> .textWithIconContainer_HigqCD[aria-label^="In voice"]) > .dot_HigqCD { display: none; }
+html.theme-dark .container_HigqCD:has(> .textWithIconContainer_HigqCD[aria-label^="In voice"]) .customStatusContent_HigqCD::before { content: "thinking "; white-space: pre; }
+html.theme-dark .container_HigqCD:has(> .textWithIconContainer_HigqCD[aria-label^="In voice"]) .customStatusContent_HigqCD > .truncated_HigqCD::before,
+html.theme-dark .container_HigqCD:has(> .textWithIconContainer_HigqCD[aria-label^="In voice"]) .customStatusContent_HigqCD > .truncated_HigqCD::after { content: "'"; }
 
 html.theme-dark :is([class^="typing_"], [class*=" typing_"]) :is([class^="text_"], [class*=" text_"]) {
   font-size: 0;
