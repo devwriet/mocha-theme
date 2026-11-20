@@ -210,6 +210,13 @@ html.theme-dark .peopleListItem_y75PxA:has(rect[fill="#45a366"]) .subtext_jPuNMC
 html.theme-dark .peopleListItem_y75PxA:has(rect[fill="#ffc04e"]) .subtext_jPuNMC > .text_CXmngM::after { content: "touching grass (brb)"; }
 html.theme-dark .peopleListItem_y75PxA:has(rect[fill="#da3e44"]) .subtext_jPuNMC > .text_CXmngM::after { content: "in the zone, go away"; }
 html.theme-dark .peopleListItem_y75PxA:has(rect[fill="#84858d"]) .subtext_jPuNMC > .text_CXmngM::after { content: "touched grass"; }
+/* Own status under your name (bottom-left panel). The panel avatar dot says which. A custom status shows in the same slot and gets covered too. */
+html.theme-dark .accountPopoutButtonWrapper_g6VwXp .default_Dq3ch1 .animatedText_73Jh6f { font-size: 0; }
+html.theme-dark .accountPopoutButtonWrapper_g6VwXp .default_Dq3ch1 .animatedText_73Jh6f::after { font-size: 12px; }
+html.theme-dark .accountPopoutButtonWrapper_g6VwXp:has(rect[fill="#45a366"]) .default_Dq3ch1 .animatedText_73Jh6f::after { content: "not touching grass rn"; }
+html.theme-dark .accountPopoutButtonWrapper_g6VwXp:has(rect[fill="#ffc04e"]) .default_Dq3ch1 .animatedText_73Jh6f::after { content: "touching grass (brb)"; }
+html.theme-dark .accountPopoutButtonWrapper_g6VwXp:has(rect[fill="#da3e44"]) .default_Dq3ch1 .animatedText_73Jh6f::after { content: "in the zone, go away"; }
+html.theme-dark .accountPopoutButtonWrapper_g6VwXp:has(rect[fill="#84858d"]) .default_Dq3ch1 .animatedText_73Jh6f::after { content: "lurking"; }
 /* LIVE pill in voice rows, live DOM 2026-11-20. Pinned hash so server pings stay maroon */
 html.theme-dark .icons_YUoOxm .badge_4guu7- { background-color: var(--mocha-sky); }
 /* "In voice" and "Sharing their screen" icons hardcode Discord green as a fill attribute */
