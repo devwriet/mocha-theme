@@ -227,6 +227,7 @@ html.theme-dark .textWithIconContainer_HigqCD[aria-label^="In voice"] > .truncat
 html.theme-dark .textWithIconContainer_HigqCD[aria-label^="Sharing their screen"] > .truncated_HigqCD::after { content: "showing off"; font-size: 12px; }
 /* Voice row with a custom status: drop the dot and read "thinking '<status>'" */
 html.theme-dark .container_HigqCD:has(> .textWithIconContainer_HigqCD[aria-label^="In voice"]) > .dot_HigqCD { display: none; }
+html.theme-dark .container_HigqCD:has(.customStatusContent_HigqCD) > .textWithIconContainer_HigqCD > .truncated_HigqCD { display: none; } /* emoji statuses keep the voice text, so "yapping thinking" doubled up */
 html.theme-dark .container_HigqCD:has(> .textWithIconContainer_HigqCD[aria-label^="In voice"]) .customStatusContent_HigqCD::before { content: "thinking "; white-space: pre; }
 html.theme-dark .container_HigqCD:has(> .textWithIconContainer_HigqCD[aria-label^="In voice"]) .customStatusContent_HigqCD > .truncated_HigqCD::before,
 html.theme-dark .container_HigqCD:has(> .textWithIconContainer_HigqCD[aria-label^="In voice"]) .customStatusContent_HigqCD > .truncated_HigqCD::after { content: "'"; }
